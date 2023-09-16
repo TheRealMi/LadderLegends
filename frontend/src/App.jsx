@@ -1,19 +1,18 @@
-import React from 'react';
-import Navbar from './Components/Navbar';
-import Board from './Components/Board';
-import './index.css'
-
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Board from "./Components/Board";
+import ListBoards from "./Components/ListBoards";
+import "./index.css";
 
 function App() {
-
-  <title>Ladder League</title>
+  <title>Ladder League</title>;
   return (
-      <React.Fragment>
-          <Navbar/>
-          <Board/>
-  
-      </React.Fragment>
-  )
+    <React.Fragment>
+      <Navbar />
+      <Board />
+      <ListBoards />
+    </React.Fragment>
+  );
 }
 
-export default App
+export default App;
