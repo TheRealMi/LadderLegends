@@ -1,5 +1,5 @@
 import Profiles from './Profiles';
-import './index.css';
+import '../index.css';
 function Board(){
     return(
         <div class="board">

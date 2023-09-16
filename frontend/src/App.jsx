@@ -1,7 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Board from './Board';
-import './App.css';
+import Navbar from './Components/Navbar';
+import Board from './Components/Board';
 import './index.css'
 
 
