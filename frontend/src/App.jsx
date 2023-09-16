@@ -8,12 +8,10 @@ function App() {
   const [msg, setMsg] = useState({})
 
   useEffect(() => {
-    fetch('/api/hello')
+    const username = "myuser"
+    fetch(`/api/getname/${username}`)
       .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setMsg(data);
-      })
+      .then(data => {setMsg(data)})
   }, [])
 
   return (
@@ -35,7 +33,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p>The message was {msg?.message}</p>
+      <p>Hello {msg.name}!</p>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
