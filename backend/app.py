@@ -5,9 +5,11 @@ from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
 
+load_dotenv()
 app = Flask(__name__, static_folder='dist', static_url_path='/')
 # MongoDB setup and configuration
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+# app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 # define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
@@ -37,6 +39,8 @@ def login():
     if user:
         user["_id"] = str(user["_id"])
         user.pop("password", None)
+        for i in range(0, len(user["Leaderboards"])):
+            user["Leaderboards"][i] = str(user["Leaderboards"][i])
         return jsonify(user)
     else:
         return jsonify({"error": "Login failed, incorrect username or password"})
