@@ -1,6 +1,4 @@
 # actual git ignore...not sure what the above is all about
-backend/venv/
-backend/__pycache__/
 *.log
 *.pyc
 .env
