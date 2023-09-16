@@ -8,8 +8,8 @@ from bson.objectid import ObjectId
 load_dotenv()
 app = Flask(__name__, static_folder='dist', static_url_path='/')
 # MongoDB setup and configuration
-# app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+# app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 # define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
@@ -63,7 +63,6 @@ def register():
             }
         )
     except Exception as e:
-        print(e)
         return jsonify({"error": e})
     
     return jsonify({"message": "User registered!"})
