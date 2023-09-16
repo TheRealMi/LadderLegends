@@ -1,15 +1,10 @@
 # import flask and render template along with pymongo
-from flask import Flask, render_template
-from flask_pymongo import PyMongo
-import os
+from flask import render_template
+from app import app, mongo
 
-# initialize flask app and mongodb URI
-app = Flask(__name__)
-# save mongo URI
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-mongo = PyMongo(app)
+# define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
-
+cols = 
 # define app route
 @app.route('/')
 # return the render template of the hello world index

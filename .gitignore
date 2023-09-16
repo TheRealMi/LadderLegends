@@ -130,8 +130,8 @@ dist
 .pnp.*
 
 # actual git ignore...not sure what the above is all about
-venv/
-__pycache__/
+backend/venv/
+backend/__pycache__/
 *.log
 *.pyc
 .env
