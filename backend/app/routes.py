@@ -1,6 +1,6 @@
 # import flask and render template along with pymongo
 from flask import render_template
-from app import app, mongo
+from . import app, mongo
 
 # define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
