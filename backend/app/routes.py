@@ -4,6 +4,7 @@ from . import app, mongo
 
 # define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
+
 # define app route
 @app.route('/')
 # return the render template of the hello world index

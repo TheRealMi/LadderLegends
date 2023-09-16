@@ -6,6 +6,5 @@ import os
 # initialize flask app and mongodb URI
 app = Flask(__name__)
 # save mongo URI
-#app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["MONGO_URI"] = "mongodb+srv://superuser:dumbsuperuserLL123@cluster0.yheaxbu.mongodb.net/?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
