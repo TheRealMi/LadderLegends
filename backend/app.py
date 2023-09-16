@@ -14,7 +14,7 @@ db = mongo.cx["LadderLegendsDB"]
 @app.route('/')
 # return the render template of the hello world index
 def index():
-    user = db.Users.find_one({'name': 'helloname'})
+    user = db.Users.find_one({'name': 'myorgname'})
     print(user)
     username = user['name'] if user else None
     return render_template('index.html', name=username)
