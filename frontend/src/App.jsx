@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [msg, setMsg] = useState({})
 
+  // Hard coded test case just to demonstrate pulling data from mongodb via the API
   useEffect(() => {
     const username = "myuser"
     fetch(`/api/getname/${username}`)
