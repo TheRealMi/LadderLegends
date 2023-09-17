@@ -10,7 +10,6 @@ function App() {
     <React.Fragment>
       <Navbar />
       <Board />
-      <ListBoards />
     </React.Fragment>
   );
 }
