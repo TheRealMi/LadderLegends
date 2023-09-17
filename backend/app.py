@@ -136,12 +136,37 @@ def getuser(userid):
 # ADD: Add player by summoner name:
 @app.route('/api/addplayer', methods=['POST'])
 def addplayer():
+    # Helper function that takes a leaderboard, player object, and player id and adds them to the lb
+    def add_to_lb(lbid, player, pid):
+        # check if the player is already in the leaderboard
+        lb = lbs.find_one({"_id": ObjectId(lbid)})
+        for p in lb["players"]:
+            if p["ign"] == player["ign"]:
+                return jsonify({"error": "player already exists in leaderboard"})
+        # append this player to the correct leaderboard
+        query = { "_id": ObjectId(lbid) }
+        push = {"$push": {"players": player}}
+        # update the leaderboard
+        try:
+            lbs.update_one(query, push)
+        except Exception as e:
+            return jsonify({"error": e})
+        
+        # Set the id of the return object to the player id obtained earlier, then return the final player
+        player["_id"] = str(pid)
+        return jsonify(player)
+
     # extract summoner name
     summoner_name = request.json["summoner"]
-    print(summoner_name)
+    # just in case, see if this user already exists in the player collection
+    player = players.find_one({"ign": summoner_name})
+    if player:
+        # player already exists, just add it to the leaderboard
+        print("PLAYER EXISTS, SKIPPPPP")
+        return add_to_lb(request.json["leaderboard"], player, player["_id"])
+
     # build url based on summoner name
     url = riot_url + '/lol/summoner/v4/summoners/by-name/' + summoner_name
-    print(url)
     # make the request and pass in standard headers
     res = requests.get(url, headers=riot_headers)
     # if the request went bad, womp womp
@@ -149,12 +174,10 @@ def addplayer():
         return jsonify({"error": "an error occured while loading player data"})
     # load data into json format and extract the summoner id
     res = res.json()
-    print(res)
     summoner_id = res["id"] # from result
    
     # use the summoner id to grab the summor information including rank
     url = riot_url + '/lol/league/v4/entries/by-summoner/' + summoner_id
-    print(url)
     # make the request and pass in the standard headers
     res = requests.get(url, headers=riot_headers)
     # If the request went bad, womp womp
@@ -162,12 +185,11 @@ def addplayer():
         return jsonify({"error": "an error occured while loading player data"})
     # load data into json format and extract the summoner rank and tier (after ensuring the data exists)
     res = res.json()
-    print(res)
     if len(res) < 1:
         return jsonify({"error": "player profile is likely private"})
+    # extract the players rank and tier
     summoner_rank = res[0]["rank"]
     summoner_tier = res[0]["tier"]
-    print(summoner_rank, summoner_tier)
 
     # build json with user summoner name, rank, and tier
     player = {
@@ -175,40 +197,95 @@ def addplayer():
         "tier": summoner_tier,
         "rank": summoner_rank
     }
-    print(player)
     # use json build to try and insert into the database
     try:
         res = players.insert_one(player)
-        print("inserted...")
     except Exception as e:
         print(e)
         return jsonify({"error": e})
-    # collect the new players ObjectId for future use
-    print("try catch cleared")
-    pid = res.inserted_id
 
-    # Now extract leaderboard id from request, the player will be added to this leaderboard
-    lbid = request.json["leaderboard"]
-    print(lbid)
-    # append this player to the correct leaderboard
-    query = { "_id": ObjectId(lbid) }
-    print(query)
-    push = {"$push": {
-        "players": ObjectId(pid)
-    }}
-    print(push)
-    # update the leaderboard
+    # collect the new players ObjectId and add it to the user object
+    pid = res.inserted_id
+    player["_id"] = pid
+
+    return add_to_lb(request.json["leaderboard"], player, pid)
+
+
+# ===== LEADERBOARD ENDPOINTS =====
+# GET: Get a full leaderboard object given a leaderboard id
+@app.route('/api/getlb/<lbid>', methods=['GET'])
+def getlb(lbid):
+    lb = lbs.find_one({"_id": ObjectId(lbid)})
+    if not lb:
+        return jsonify({"error": "leaderboard not found"})
+    
+    # leaderboard was found, return the whole document pls
+    lb["_id"] = str(lb["_id"])
+    for i in range(0, len(lb["players"])):
+        lb["players"][i]["_id"] = str(lb["players"][i]["_id"])
+    return jsonify(lb)
+
+# DELETE: Remove a player from a leaderboard given their summoner name and leaderboard id
+@app.route('/api/deleteplayer/<lbid>', methods=['PUT'])
+def deleteplayer(lbid):
+    # grab the correct leaderboard to work with
+    lb = lbs.find_one({"_id": ObjectId(lbid)})
+    # extract summoner name from request
+    summoner = request.json["summoner"]
+
+    # search to see if the summoner exists or not
+    for i, player in enumerate(lb["players"]):
+        if summoner == player["ign"]:
+            idx = i # element exists, early exit
+            break
+    # womp womp, player didn't exist in this leaderboard
+    if not idx:
+        jsonify({"error": "player not found in leaderboard"})
+
+    # Now we can just update the element directly with an update call
+    query = {"_id": ObjectId(lbid)}
+    update = {"$pull": {"players": {"ign": summoner}}}
     try:
-        lbs.update_one(query, push)
+        lbs.update_one(query, update)
     except Exception as e:
         return jsonify({"error": e})
-    print("try catch cleared pt2")
-    
-    # Set the id of the return object to the player id obtained earlier, then return the final player
-    player["_id"] = str(pid)
-    return jsonify(player)
+    return jsonify({"message": "player removed!"})
 
-# 
+# GET: Get ALL leaderboards
+@app.route('/api/getalllb', methods=['GET'])
+def getalllb():
+    try:
+        all_lb = list(lbs.find({}))
+        # go through every leaderboard and convert the object IDs to strings
+        for lb in all_lb:
+            lb["_id"] = str(lb["_id"])
+            # go through the array of players and convert those object IDs
+            for player in lb["players"]:
+                player["_id"] = str(player["_id"])
+    except Exception as e:
+        return jsonify({"error": e})
+    return jsonify(all_lb)
+
+# ADD: Create an empty leaderboard
+@app.route('/api/createlb', methods=['POST'])
+def createlb():
+    # extract leaderboard name and organization
+    name = request.json["name"]
+    org = request.json["organization"]
+    if not name or not org:
+        return jsonify({"error": "invalid input, name and organization required"})
+    new_lb = {
+        "name": name,
+        "organization": org,
+        "players": []
+    }
+    try:
+        res = lbs.insert_one(new_lb)
+    except Exception as e:
+        return jsonify({"error": "unable to add leaderboard"})
+    new_lb["_id"] = str(res.inserted_id)
+    return jsonify(new_lb)
+
 # Catch all, serve the frontend index
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
