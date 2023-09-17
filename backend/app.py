@@ -7,13 +7,9 @@ from dotenv import load_dotenv
 from bson.objectid import ObjectId
 from urllib.parse import quote
 
-# load dotenv variables
-load_dotenv()
-
 app = Flask(__name__, static_folder='dist', static_url_path='/')
 # MongoDB setup and configuration
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 # define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
@@ -26,7 +22,7 @@ region = "na1"
 riot_url = f'https://{region}.api.riotgames.com'
 riot_headers = {
     "Origin": "https://developer.riotgames.com",
-    "X-Riot-Token": os.getenv("RIOT_API_KEY")
+    "X-Riot-Token": os.environ.get("RIOT_API_KEY")
 }
 
 # Health check endpoint, fake news.
@@ -319,4 +315,4 @@ def catch_all(path):
     return app.send_static_file('index.html')
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run()
