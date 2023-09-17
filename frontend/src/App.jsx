@@ -1,18 +1,17 @@
-import React from 'react';
-import Navbar from './Components/Navbar';
-import Leaderboard from './Leaderboard';
-import ListBoards from './Components/ListBoards';
-import Home from './Home';
-import Signup from './Signup';
-import './index.css'
-import {Route, Routes, Link} from "react-router-dom"
-
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Leaderboard from "./Leaderboard";
+import ListBoards from "./Components/ListBoards";
+import Home from "./Home";
+import Signup from "./Signup";
+import "./index.css";
+import { Route, Routes, Link } from "react-router-dom";
 
 function App() {
   return (
     <>
       <React.Fragment>
-          <Navbar/>
+        <Navbar />
       </React.Fragment>
 
       <div class="container"></div>
