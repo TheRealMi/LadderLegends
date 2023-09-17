@@ -39,7 +39,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 * Saif: Back End Developer – MongoDB, Python –
 * Mia: Front End Developer – React.js, CSS –
-* Samuel:Front End Developer – React.js, CSS –
+* Samuel: Front End Developer – React.js, CSS –
 * Jorden: 3D Artist – React.js, Blender –
 * link GitHub profiles
 
