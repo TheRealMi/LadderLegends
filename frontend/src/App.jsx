@@ -8,7 +8,6 @@ import {Route, Routes, Link} from "react-router-dom"
 
 
 function App() {
-
   return (
     <>
       <React.Fragment>
@@ -20,10 +19,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Leaderboard" element={<Leaderboard />} />
         <Route path="/Signup" element={<Signup />} />
-      
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
