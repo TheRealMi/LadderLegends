@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Components/Navbar';
 import Leaderboard from './Leaderboard';
+import ListBoards from './Components/ListBoards';
 import Home from './Home';
 import Signup from './Signup';
 import './index.css'
@@ -17,7 +18,7 @@ function App() {
       <div class="container"></div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Leaderboard" element={<Leaderboard />} />
+        <Route path="/Components/ListBoards" element={<ListBoards />} />
         <Route path="/Signup" element={<Signup />} />
       </Routes>
     </>
