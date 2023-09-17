@@ -2,21 +2,7 @@
 
 ## 📝 Description
 
-Ladder Legends is a web application designed for gaming organizations and players who want to stay updated in real-time on their changing ranks, sourced directly from the Riot API. This project was born out of Mia's firsthand experience in e-sports teams, both as a player and an organization leader. Our vision is to foster a friendly culture of competition among members of e-sports teams, encouraging progress in their rankings through affiliation with their group and its members.
-
-Saif (the backend developer) explored the use of Python and MongoDB; Mia and Angelo (the front end developers and UI/UX designers) explored React.js rather than traditional CSS and HTML web applications; and Jorden (the UI/UX designer and 3D artist) explored Blender. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
-
-## 🏅 Badges
-
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+Ladder Legends is a web application designed for gaming organizations and players who want to stay updated in real-time on their changing ranks, sourced directly from the Riot API. This project was born out of Mia's firsthand experience in e-sports teams, both as a player and an organization leader. Our vision is to foster a friendly culture of competition among members of e-sports teams, encouraging progress in their rankings through affiliation with their group and its members. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
 
 ## 📎 Table of Contents
 
@@ -25,6 +11,7 @@ Saif (the backend developer) explored the use of Python and MongoDB; Mia and Ang
 - [Team](#team)
 - [Features](#features)
 - [Technologies Used](#technologiesused)
+- [Badges](#badges)
 - [Getting Started](#gettingstarted)
 - [Usage](#usage)
 - [Future Implementations](#futureimplementations)
@@ -56,6 +43,18 @@ Ladder Legends was conceived with the aim of enhancing the e-sports community's 
 * Frontend: React.js, JavasScript
 * UI/UX Design: Blender
 * API: Riot API
+
+## 🏅 Badges
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
 ## ⏰ Getting Started
 
