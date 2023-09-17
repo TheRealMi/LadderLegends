@@ -7,9 +7,11 @@ from dotenv import load_dotenv
 from bson.objectid import ObjectId
 from urllib.parse import quote
 
+load_dotenv()
 app = Flask(__name__, static_folder='dist', static_url_path='/')
 # MongoDB setup and configuration
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+# app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 # define the correct database to use
 db = mongo.cx["LadderLegendsDB"]
@@ -40,7 +42,6 @@ def login():
         user.pop("password", None)
         for i in range(0, len(user["Leaderboards"])):
             user["Leaderboards"][i] = str(user["Leaderboards"][i])
-        print(user)
         return jsonify(user)
     else:
         return jsonify({"error": "Login failed, incorrect username or password"})
@@ -65,7 +66,6 @@ def register():
         }
         res = users.insert_one(usr)
     except Exception as e:
-        print(e)
         return jsonify({"error": e})
     usr["_id"] = str(res.inserted_id)
     

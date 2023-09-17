@@ -1,45 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Leaderboard from "./Leaderboard";
+import Signup from "./Signup";
+import "./index.css";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [msg, setMsg] = useState({})
-
-  // Hard coded test case just to demonstrate pulling data from mongodb via the API
-  useEffect(() => {
-    const username = "myuser"
-    fetch(`/api/getname/${username}`)
-      .then(res => res.json())
-      .then(data => {setMsg(data)})
-  }, [])
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p>Hello {msg.name}!</p>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <React.Fragment>
+        <Navbar />
+      </React.Fragment>
+      <div class="container"></div>
+      <Routes>
+        <Route path="/Leaderboard" element={<Leaderboard />} />
+        <Route path="/Signup" element={<Signup />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
