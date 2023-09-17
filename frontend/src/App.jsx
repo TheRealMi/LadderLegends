@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar";
 import Leaderboard from "./Leaderboard";
 import Signup from "./Signup";
 import "./index.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       </React.Fragment>
       <div class="container"></div>
       <Routes>
-        <Route path="/Leaderboard" element={<Leaderboard />} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/Leaderboard" component={Leaderboard} />
+        <Route path="/Signup" component={Signup} />
       </Routes>
     </>
   );
