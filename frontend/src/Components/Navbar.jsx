@@ -3,7 +3,7 @@ function Navbar(){
     return (
          
         <nav class="headerNav">
-            <a href="/" class="site-title">Ladder League</a>
+            <Link to="/" class="site-title">Ladder League</Link>
             <ul>
                <CustomLink href='/Leaderboard'>Leaderboard</CustomLink>
                <CustomLink href='/Signup'>Sign up</CustomLink>
