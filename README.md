@@ -37,10 +37,10 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ## Credits
 
-Saif - Back End Developer (MongoDB, Python)
-Mia - Front End Developer (React.js, CSS)
-Samuel - Front End Developer (React.js, CSS)
-Jorden Demerritte - 3D Artist (React.js, Blender)
+* Saif: Back End Developer – MongoDB, Python –
+* Mia: Front End Developer – React.js, CSS –
+* Samuel:Front End Developer – React.js, CSS –
+* Jorden: 3D Artist – React.js, Blender –
 * link GitHub profiles
 
 ### Third-party Assets
