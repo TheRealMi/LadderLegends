@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar';
 import Leaderboard from './Leaderboard';
 import Home from './Home';
 import Signup from './Signup';
+import Hello from './Components/SeifExample'
 import './index.css'
 import {Route, Routes, Link} from "react-router-dom"
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Leaderboard" element={<Leaderboard />} />
         <Route path="/Signup" element={<Signup />} />
       </Routes>
+      <Hello></Hello>
     </>
   );
 }
