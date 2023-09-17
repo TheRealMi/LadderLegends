@@ -4,6 +4,15 @@
 
 A web application for gaming organizations and players to keep real-time updates on the changing ranks, which was taken from the Riot API. The inception of the idea conincides with Mia's experience in e-sports teams, as a player and organization lead. Our desire to create a friendly culture of competition between members of e-sports teams across organizations by using the affiliation to the group and its members become a motivator to continue progressing in their ranking. As a team, each member was pushed to explore in unknown aspects of programming. Saif (the background developer) explored the use of Python and MongoDB; Mia and Samuel (the front end developers and UI/UX designers) explored React.js rather than traditional CSS and HTML web applications; and Jorden (the UI/UX designer and 3D artist) explored Blender. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
 
+## Badges
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white)
+
 ## Table of Contents (Optional)
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
@@ -50,15 +59,6 @@ The last section of a high-quality README file is the license. This lets other d
 ---
 
 🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white)
 
 ## Features
 
