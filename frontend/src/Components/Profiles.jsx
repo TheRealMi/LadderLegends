@@ -1,17 +1,7 @@
 import React from "react";
 
 function Profiles() {
-  return (
-    <div id="profile">
-      {Item()}
-      {Item()}
-      {Item()}
-      {/* add player rank
-           {/* <ul className="list-group">
-           {players.map(player => <li>{player}</li>)}
-           </ul> */}
-    </div>
-  );
+  return <div id="profile">{Item()}</div>;
 }
 
 function Item() {
