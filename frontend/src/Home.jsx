@@ -5,9 +5,12 @@ import './index.css';
 export default function Leaderboard() {
     return (
         <>
-            <h1>Are you a:</h1>
-            <Link to="/Leaderboard">Player</Link>
-            <Link to="/Signup">Community</Link>
+            <div>
+            <h1 class="question">Are you a:</h1>
+            <Link to="/Components/Listboards"><button type="button" class="btn btn-primary mx-center p-2 " >Player</button></Link>
+            <Link to="/Signup"><button type="button" class="btn btn-primary mx-center p-2" >Community</button></Link> 
+            </div>
+          
         </>
     )
 
