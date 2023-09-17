@@ -2,7 +2,7 @@
 
 ## Description
 
-A web application for gaming organizations and players to keep real-time updates on the changing ranks, which was taken from the Riot API. The inception of the idea conincides with Mia's experience in e-sports teams, as a player and organization lead. Our desire to create a friendly culture of competition between members of e-sports teams across organizations by using the affiliation to the group and its members become a motivator to continue progressing in their ranking. As a team, each member was pushed to explore in unknown aspects of programming. Saif (the backend developer) explored the use of Python and MongoDB; Mia and Samuel (the front end developers and UI/UX designers) explored React.js rather than traditional CSS and HTML web applications; and Jorden (the UI/UX designer and 3D artist) explored Blender. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
+A web application for gaming organizations and players to keep real-time updates on the changing ranks, which was taken from the Riot API. The inception of the idea conincides with Mia's experience in e-sports teams, as a player and organization lead. Our desire to create a friendly culture of competition between members of e-sports teams across organizations by using the affiliation to the group and its members become a motivator to continue progressing in their ranking. As a team, each member was pushed to explore in unknown aspects of programming. Saif (the backend developer) explored the use of Python and MongoDB; Mia and Angelo (the front end developers and UI/UX designers) explored React.js rather than traditional CSS and HTML web applications; and Jorden (the UI/UX designer and 3D artist) explored Blender. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
 
 ## Badges
 
@@ -42,7 +42,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 * Saif: Back End Developer – MongoDB, Python –
 * Mia: Front End Developer – React.js, CSS –
-* Samuel: Front End Developer – React.js, CSS –
+* Angelo: Front End Developer – React.js, CSS –
 * Jorden: 3D Artist – React.js, Blender –
 
 ### Third-party Assets

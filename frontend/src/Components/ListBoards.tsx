@@ -1,4 +1,7 @@
 import { useState } from "react";
+import React from "react";
+import Leaderboard from "../Leaderboard";
+import {Route, Routes, Link} from "react-router-dom"
 
 function ListBoards() {
   let boards = [
@@ -15,6 +18,7 @@ function ListBoards() {
         <p>Looks like your leaderboards are at another Nexus</p>
       )}
       <ul className="list-group">
+    
         {boards.map((board, index) => (
           <li
             key={board}
