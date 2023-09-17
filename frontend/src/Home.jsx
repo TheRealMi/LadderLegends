@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-// import Profiles from '../../temp/src/Components/Profiles';
+import Profiles from './Components/Profiles';
 import './index.css';
 
 export default function Leaderboard() {
@@ -10,4 +10,5 @@ export default function Leaderboard() {
             <Link to="/Signup">Community</Link>
         </>
     )
+
 }

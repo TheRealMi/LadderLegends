@@ -2,6 +2,8 @@ import {useState} from 'react'
 import Profiles from './Components/Profiles';
 import './index.css';
 export default function Leaderboard(){
+
+   
     const [leaderboard, setLeaderboard] = useState([{name:"Angel"}, {name:"Mia"}, {name:"Juan"}])
     
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function Leaderboard(){
             setLoading(false); 
         });
     }, []); 
-    
+
     return(
         <div class="board">
             <h1 class="leaderboard">Leaderboard</h1>
@@ -31,4 +33,5 @@ export default function Leaderboard(){
             <Profiles></Profiles>    
         </div>
     )
+    
 }
