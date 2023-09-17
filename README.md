@@ -13,9 +13,7 @@ A web application for gaming organizations and players to keep real-time updates
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white)
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -41,8 +39,8 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 Saif - Back End Developer (MongoDB, Python)
 Mia - Front End Developer (React.js, CSS)
-Jorden Demerritte - 3D Artist (React.js, Blender)
 Samuel - Front End Developer (React.js, CSS)
+Jorden Demerritte - 3D Artist (React.js, Blender)
 * link GitHub profiles
 
 ### Third-party Assets
