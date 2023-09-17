@@ -5,6 +5,7 @@ from flask_cors import CORS
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
+from urllib.parse import quote
 
 # load dotenv variables
 load_dotenv()
@@ -33,15 +34,6 @@ riot_headers = {
 def hello():
     return jsonify({"message": "hey!"})
 
-# TEST ENDPOINT: Given a username, return the organization name
-@app.route('/api/getname/<username>')
-def getname(username):
-    user = db.Users.find_one({"username": username})
-    if user:
-        return jsonify({"name": user["name"]})
-    else:
-        return jsonify({"name": "not found"})
-
 # ===== ORGANIZATION/USER ENDPOINTS =====
 # LOGIN: Given a username and password, return the user object
 @app.route('/api/login', methods=['POST'])
@@ -50,6 +42,9 @@ def login():
     if user:
         user["_id"] = str(user["_id"])
         user.pop("password", None)
+        for i in range(0, len(user["Leaderboards"])):
+            user["Leaderboards"][i] = str(user["Leaderboards"][i])
+        print(user)
         return jsonify(user)
     else:
         return jsonify({"error": "Login failed, incorrect username or password"})
@@ -58,24 +53,27 @@ def login():
 @app.route('/api/register', methods=['POST'])
 def register():
     username = request.json["username"]
+    usr = users.find_one({"username": username})
+    if usr:
+        return jsonify({"error": "user already registered"})
     password = request.json["password"]
     email = request.json["email"]
     name = request.json["name"]
     try:
-        users.insert_one(
-            {
-                "username": username,
-                "password": password,
-                "email": email,
-                "name": name,
-                "Leaderboards": []
-            }
-        )
+        usr = {
+            "username": username,
+            "password": password,
+            "email": email,
+            "name": name,
+            "Leaderboards": []           
+        }
+        res = users.insert_one(usr)
     except Exception as e:
         print(e)
         return jsonify({"error": e})
+    usr["_id"] = str(res.inserted_id)
     
-    return jsonify({"message": "User registered!"})
+    return jsonify(usr)
 
 # UPDATE: Given all the attributes of a user, update its values
 @app.route('/api/updateuser/<userid>', methods=['PUT'])
@@ -94,17 +92,22 @@ def updateuser(userid):
 
     # If the user exists, update their entry/document
     query = { "_id": ObjectId(userid) }
-    new_values = {"$set": {
+    new_values = {
         "_id": ObjectId(userid),
         "username": username,
         "password": password,
         "email": email,
         "name": name,
         "Leaderboards": Leaderboards
-    }}
-    users.update_one(query, new_values)
+    }
+    cmd = {"$set": new_values}
+    try:
+        users.update_one(query, cmd)
+    except Exception as e:
+        return jsonify({"error": e})
     # hooray!
-    return jsonify({"message": "Updated user!"})
+    new_values["_id"] = str(new_values["_id"])
+    return jsonify(new_values)
 
 # DELETE: Given a user id, delete their entry from the database
 @app.route('/api/deleteuser/<userid>', methods=['DELETE'])
@@ -162,11 +165,10 @@ def addplayer():
     player = players.find_one({"ign": summoner_name})
     if player:
         # player already exists, just add it to the leaderboard
-        print("PLAYER EXISTS, SKIPPPPP")
         return add_to_lb(request.json["leaderboard"], player, player["_id"])
 
     # build url based on summoner name
-    url = riot_url + '/lol/summoner/v4/summoners/by-name/' + summoner_name
+    url = riot_url + '/lol/summoner/v4/summoners/by-name/' + quote(summoner_name)
     # make the request and pass in standard headers
     res = requests.get(url, headers=riot_headers)
     # if the request went bad, womp womp
@@ -211,20 +213,6 @@ def addplayer():
     return add_to_lb(request.json["leaderboard"], player, pid)
 
 
-# ===== LEADERBOARD ENDPOINTS =====
-# GET: Get a full leaderboard object given a leaderboard id
-@app.route('/api/getlb/<lbid>', methods=['GET'])
-def getlb(lbid):
-    lb = lbs.find_one({"_id": ObjectId(lbid)})
-    if not lb:
-        return jsonify({"error": "leaderboard not found"})
-    
-    # leaderboard was found, return the whole document pls
-    lb["_id"] = str(lb["_id"])
-    for i in range(0, len(lb["players"])):
-        lb["players"][i]["_id"] = str(lb["players"][i]["_id"])
-    return jsonify(lb)
-
 # DELETE: Remove a player from a leaderboard given their summoner name and leaderboard id
 @app.route('/api/deleteplayer/<lbid>', methods=['PUT'])
 def deleteplayer(lbid):
@@ -250,6 +238,21 @@ def deleteplayer(lbid):
     except Exception as e:
         return jsonify({"error": e})
     return jsonify({"message": "player removed!"})
+
+
+# ===== LEADERBOARD ENDPOINTS =====
+# GET: Get a full leaderboard object given a leaderboard id
+@app.route('/api/getlb/<lbid>', methods=['GET'])
+def getlb(lbid):
+    lb = lbs.find_one({"_id": ObjectId(lbid)})
+    if not lb:
+        return jsonify({"error": "leaderboard not found"})
+    
+    # leaderboard was found, return the whole document pls
+    lb["_id"] = str(lb["_id"])
+    for i in range(0, len(lb["players"])):
+        lb["players"][i]["_id"] = str(lb["players"][i]["_id"])
+    return jsonify(lb)
 
 # GET: Get ALL leaderboards
 @app.route('/api/getalllb', methods=['GET'])
@@ -284,7 +287,30 @@ def createlb():
     except Exception as e:
         return jsonify({"error": "unable to add leaderboard"})
     new_lb["_id"] = str(res.inserted_id)
+    query = {"name": org}
+    cmd = {
+        "$push": {
+            "Leaderboards": ObjectId(new_lb["_id"])
+        }
+    }
+    users.update_one(query, cmd)
     return jsonify(new_lb)
+
+# DELETE: Delete a leaderboard given an id
+@app.route('/api/deletelb/<lbid>', methods=['DELETE'])
+def deletelb(lbid):
+    lb = lbs.find_one({"_id": ObjectId(lbid)})
+    if not lb:
+        return jsonify({"error": "leaderboard does not exist"})
+    org = lb["organization"]
+    query = {"_id": ObjectId(lbid)}
+    lbs.delete_one(query)
+    query = {"name": org}
+    cmd = {"$pull": {
+        "Leaderboards": ObjectId(lbid)
+    }}
+    users.update_one(query, cmd)
+    return jsonify({"message": "leaderboard deleted!"})
 
 # Catch all, serve the frontend index
 @app.route('/', defaults={'path': ''})
