@@ -1,10 +1,12 @@
 # 🪜 Ladder Legends - Web Application
 
-## Description
+## 📝 Description
 
-A web application for gaming organizations and players to keep real-time updates on the changing ranks, which was taken from the Riot API. The inception of the idea conincides with Mia's experience in e-sports teams, as a player and organization lead. Our desire to create a friendly culture of competition between members of e-sports teams across organizations by using the affiliation to the group and its members become a motivator to continue progressing in their ranking. As a team, each member was pushed to explore in unknown aspects of programming. Saif (the backend developer) explored the use of Python and MongoDB; Mia and Angelo (the front end developers and UI/UX designers) explored React.js rather than traditional CSS and HTML web applications; and Jorden (the UI/UX designer and 3D artist) explored Blender. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
+Ladder Legends is a web application designed for gaming organizations and players who want to stay updated in real-time on their changing ranks, sourced directly from the Riot API. This project was born out of Mia's firsthand experience in e-sports teams, both as a player and an organization leader. Our vision is to foster a friendly culture of competition among members of e-sports teams, encouraging progress in their rankings through affiliation with their group and its members.
 
-## Badges
+Saif (the backend developer) explored the use of Python and MongoDB; Mia and Angelo (the front end developers and UI/UX designers) explored React.js rather than traditional CSS and HTML web applications; and Jorden (the UI/UX designer and 3D artist) explored Blender. Pushing ourselves outside of our comfort levels was the significant contribution this project had on us, as individuals and teammates.
+
+## 🏅 Badges
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)
@@ -16,58 +18,70 @@ A web application for gaming organizations and players to keep real-time updates
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-## Table of Contents
+## 📎 Table of Contents
 
-- [Installation](#installation)
+- [Table of Contents](#tableofcontents)
+- [Project Overview](#usage)
+- [Team](#team)
+- [Features](#features)
+- [Technologies Used](#technologiesused)
+- [Getting Started](#gettingstarted)
 - [Usage](#usage)
-- [Credits](#credits)
+- [Future Implementations](#futureimplementations)
+- [Contributing](#contribution)
 - [License](#license)
 
-## Installation
+## 📓 Project Overview
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Ladder Legends was conceived with the aim of enhancing the e-sports community's competitive spirit by enabling players and organizations to monitor their ranks and those of their teammates in real-time. This project served as a catalyst for our team members to push their boundaries and explore various aspects of programming:
 
-## Usage
 
-* Add screenshots of the flow of the website once it is up and running
-* Highlight the leadership board + instructions for log-in
+## 👋 Team
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+* **Saif** - Back End Developer - https://github.com/DarthJarJar56
+* **Angelo** - Front End Developer - https://github.com/angelomagam
+* **Mia** - Front End Developer - https://github.com/TheRealMi
+* **Jorden** - 3D Artist - https://github.com/jordendemerritte
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+## 🌟 Features
 
-## Credits
+* Real-time rank tracking sourced from the Riot API.
+* Friendly competition within e-sports teams and organizations.
+* User-friendly and intuitive interface designed for both players and organization leaders.
+* Integration with various gaming platforms and profiles.
 
-* Saif: Back End Developer – MongoDB, Python –
-* Mia: Front End Developer – React.js, CSS –
-* Angelo: Front End Developer – React.js, CSS –
-* Jorden: 3D Artist – React.js, Blender –
+## 💻 Technologies Used
 
-### Third-party Assets
-Riot API
-* any cloud storages/databases we used
+* Backend: Python, MongoDB
+* Frontend: React.js, JavasScript
+* UI/UX Design: Blender
+* API: Riot API
 
-### Tutorials
-* include blender ones that I watched for coins, etc. 
+## ⏰ Getting Started
 
-## License
+(Coming Soon)
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+### ⏰ Tutorials
 
----
+(Coming Soon)
 
-The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+## 🧩 Usage
 
-## Features
+1. Choose whether you are a player or organization.
+   1. Organization: Sign in or create an account.
+   2. Player: Search for the organization you exist under.
+2. After gaining access to the leadership board...
+    1. Organization: Track the ranks of players, add/delete players, and foster friendly competition.
+    2. Player: Track your ranks and compete with your teammates.
+3. Enjoy the friendly culture of competition and continuous progress.
 
-If your project has a lot of features, list them here.
+## 🗺️ Future Implementations
+- Organizations customizing their homepages
 
-## How to Contribute
+## 🗣️ Contribution
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+We welcome contributions from the community! If you'd like to contribute to Ladder Legends, please follow our Contribution Guidelines.
 
-## Tests
+## 📚 License
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+This project is licensed under the MIT License - see the LICENSE.md file for details.
