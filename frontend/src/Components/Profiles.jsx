@@ -4,8 +4,7 @@ function Profiles(){
     return(
         <div id="profile">
            {Item()}
-           {Item()}
-           {Item()}
+          
         </div>
 
        
