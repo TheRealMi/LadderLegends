@@ -1,4 +1,4 @@
-# Ladder Legends - Web Application
+# 🪜 Ladder Legends - Web Application
 
 ## Description
 
