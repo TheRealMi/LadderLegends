@@ -6,7 +6,7 @@ function Navbar() {
         Ladder League
       </Link>
       <ul>
-        <CustomLink href="/Leaderboard">Leaderboard</CustomLink>
+        <CustomLink href="/Components/ListBoards">Leaderboard</CustomLink>
         <CustomLink href="/Signup">Sign up</CustomLink>
       </ul>
     </nav>
