@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Components/ListBoards" element={<ListBoards />} />
+        <Route path="../Leaderboard" element={<Leaderboard />} />
         <Route path="/Signup" element={<Signup />} />
       </Routes>
     </>
